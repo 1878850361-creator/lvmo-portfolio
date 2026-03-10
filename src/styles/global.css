@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* ===== 深色科技风主题 ===== */
+@theme {
+  --color-bg: #0f172a;
+  --color-bg-alt: #0b1120;
+  --color-surface: #1e293b;
+  --color-surface-hover: #273548;
+  --color-primary: #38bdf8;
+  --color-primary-dark: #0ea5e9;
+  --color-secondary: #818cf8;
+  --color-accent: #22d3ee;
+  --color-text: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-border: #334155;
+  --color-glow: rgba(56, 189, 248, 0.15);
+  --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ===== 基础样式 ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  /* 全局径向渐变底色，统一贯穿全页 */
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 15%, rgba(56, 189, 248, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 85% 85%, rgba(129, 140, 248, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 70% at 50% 0%, #1a2744 0%, #0f172a 45%, #080e1c 100%);
+  overflow-x: hidden;
+}
+
+/* ===== 滚动渐显动画 ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* ===== Hero 粒子背景 ===== */
+#particles-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-dark {
+  /* Hero 自身背景透明，让 body 全局渐变透出 */
+  background: transparent;
+}
+
+/* ===== Section 交替背景（细腻噪点纹理 + 蓝色渐变色块）===== */
+.section-alt {
+  position: relative;
+  background: rgba(8, 14, 28, 0.55);
+}
+
+.section-alt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* 细腻噪点纹理 */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(129, 140, 248, 0.04) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-alt > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 发光卡片 ===== */
+.glow-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.glow-card:hover {
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.1), 0 0 60px rgba(129, 140, 248, 0.05);
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+/* 内层背景（遮盖 ::before 渐变，只露出 1px 边框） */
+.glow-card-inner {
+  background: var(--color-surface);
+  border-radius: 0.7rem;
+  height: 100%;
+}
+
+/* ===== 时间线 ===== */
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--color-border);
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+/* ===== 导航栏 ===== */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ===== 标签 ===== */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--color-primary);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* ===== Section 标题 ===== */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 3rem;
+}
+
+/* ===== 筛选按钮 ===== */
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+/* ===== 图片占位 ===== */
+.img-placeholder {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== 照片水彩笔刷边缘 ===== */
+.photo-watercolor {
+  /* 水彩遮罩：中心实，向边缘逐步消散 */
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 88% at 50% 48%,
+    black 45%,
+    rgba(0,0,0,0.92) 58%,
+    rgba(0,0,0,0.7) 68%,
+    rgba(0,0,0,0.35) 78%,
+    rgba(0,0,0,0.08) 86%,
+    transparent 92%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 88% at 50% 48%,
+    black 45%,
+    rgba(0,0,0,0.92) 58%,
+    rgba(0,0,0,0.7) 68%,
+    rgba(0,0,0,0.35) 78%,
+    rgba(0,0,0,0.08) 86%,
+    transparent 92%
+  );
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), 0 0 40px rgba(129, 140, 248, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.28), 0 0 60px rgba(129, 140, 248, 0.15);
+  }
+}
+
+/* ===== 渐变文字 ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== 发光分隔线 ===== */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
+  opacity: 0.3;
+}
+
+/* ===== 按钮 ===== */
+.btn-glow {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+/* ===== 卡片铺满全屏过渡动效 ===== */
+.card-transition-overlay {
+  position: fixed;
+  z-index: 9999;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.card-transition-overlay.expanded {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0;
+  border-color: transparent;
+}
+
+/* ===== 子页面配色（微偏紫/靛色调） ===== */
+.detail-page {
+  --color-surface: #1e2240;
+  --color-bg: #0e1330;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 15%, rgba(129, 140, 248, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 85% 85%, rgba(56, 189, 248, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 70% at 50% 0%, #1a2044 0%, #0e1330 45%, #080c1c 100%);
+}

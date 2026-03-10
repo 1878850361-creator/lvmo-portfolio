@@ -1,0 +1,112 @@
+---
+import { profile } from "../data/content";
+---
+
+<section id="contact" class="py-20 px-4 section-alt">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="section-title animate-on-scroll">联系我</h2>
+    <p class="section-subtitle animate-on-scroll">// contact</p>
+
+    <div class="glow-card animate-on-scroll delay-100">
+      <div class="glow-card-inner p-8">
+        <p class="text-text-secondary mb-6 leading-relaxed">
+          如果您对我的研究方向感兴趣，或有合适的工作机会，欢迎通过以下方式联系我。
+        </p>
+
+        <!-- 邮箱 -->
+        <div class="mb-6">
+          <p class="font-mono text-xs text-text-muted mb-2">// email</p>
+          <div class="flex items-center justify-center gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              class="text-primary font-medium hover:underline text-lg"
+            >
+              {profile.email}
+            </a>
+            <button
+              class="copy-btn btn-outline px-3 py-1.5 text-xs"
+              data-copy={profile.email}
+              aria-label="复制邮箱"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 电话 -->
+        <div class="mb-6">
+          <p class="font-mono text-xs text-text-muted mb-2">// phone</p>
+          <div class="flex items-center justify-center gap-3">
+            <a
+              href={`tel:${profile.phone}`}
+              class="text-primary font-medium hover:underline text-lg font-mono"
+            >
+              {profile.phone}
+            </a>
+            <button
+              class="copy-btn btn-outline px-3 py-1.5 text-xs"
+              data-copy={profile.phone}
+              aria-label="复制电话"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <p class="font-mono text-xs text-text-muted mb-3">// wechat</p>
+          <div class="w-40 h-40 mx-auto rounded-xl img-placeholder border border-border">
+            <span class="font-mono text-xs">qr_code.png</span>
+          </div>
+        </div>
+
+        <div class="glow-divider mb-6"></div>
+
+        <div class="flex justify-center gap-4">
+          {profile.socials.map((s) => (
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-glow px-5 py-2.5 text-sm"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 复制功能
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.getAttribute("data-copy");
+      if (!text) return;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        btn.classList.add("btn-glow");
+        btn.classList.remove("btn-outline");
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.classList.remove("btn-glow");
+          btn.classList.add("btn-outline");
+        }, 2000);
+      } catch (err) {
+        console.error("复制失败:", err);
+      }
+    });
+  });
+</script>

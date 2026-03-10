@@ -1,0 +1,83 @@
+---
+import { projects } from "../data/content";
+---
+
+<section id="projects" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="section-title animate-on-scroll">项目经历</h2>
+    <p class="section-subtitle animate-on-scroll">// research_projects</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, i) => (
+        <div class={`glow-card cursor-pointer animate-on-scroll delay-${(i + 1) * 100}`} data-href={`/project/${project.slug}`}>
+          <div class="glow-card-inner overflow-hidden">
+            {project.image ? (
+              <div class="h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="h-48 img-placeholder">
+                <span class="font-mono text-xs">project_{String(i + 1).padStart(2, "0")}.jpg</span>
+              </div>
+            )}
+
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-text mb-3">{project.title}</h3>
+
+              <div class="flex flex-wrap gap-2 mb-3">
+                {project.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+
+              <p class="text-text-secondary text-sm leading-relaxed mb-4">{project.description}</p>
+
+              <span class="inline-flex items-center gap-2 text-sm text-primary">
+                查看详情
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('#projects .glow-card[data-href]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = card.getAttribute('data-href');
+      if (!href) return;
+
+      const rect = card.getBoundingClientRect();
+
+      const overlay = document.createElement('div');
+      overlay.className = 'card-transition-overlay';
+      overlay.style.top = rect.top + 'px';
+      overlay.style.left = rect.left + 'px';
+      overlay.style.width = rect.width + 'px';
+      overlay.style.height = rect.height + 'px';
+      document.body.appendChild(overlay);
+
+      overlay.offsetHeight;
+      overlay.classList.add('expanded');
+
+      overlay.addEventListener('transitionend', () => {
+        window.location.href = href;
+      }, { once: true });
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 600);
+    });
+  });
+</script>

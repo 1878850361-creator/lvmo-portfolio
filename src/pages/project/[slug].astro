@@ -1,0 +1,201 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/content";
+
+export function getStaticPaths() {
+  return projects.map((project, index) => ({
+    params: { slug: project.slug },
+    props: { project, index },
+  }));
+}
+
+const { project, index } = Astro.props;
+
+// 项目详情内容
+const details = project.slug === "daguangsai" ? {
+  subtitle: "讯飞星火命题 · 品牌全案策划",
+  banner: "/images/project-daguangsai-banner.jpg",
+  background: "参加全国大学生广告艺术大赛（大广赛），以讯飞星火 AI 助手为命题品牌，团队协作完成从市场洞察、创意构思到视觉呈现的品牌全案策划，最终获省部级三等奖。",
+  sections: [
+    {
+      title: "创意策略",
+      content: "通过 SWOT 分析深入剖析讯飞星火的产品定位与品牌需求，明确其在 AI 赛道中的差异化优势。以日常生活场景作为创意切入点，拉近 AI 产品与普通用户之间的心理距离。最终选择以「手影」作为核心创意符号——手影是每个人童年中都有的生活记忆，而讯飞星火 AI 正如光源一般，照亮双手就能创造出无限可能。通过这一趣味化的视觉隐喻，将讯飞星火 AI 自然地植入受众心智。",
+    },
+    {
+      title: "我的角色",
+      content: "主导前期市场调研与 SWOT 分析，完成消费者洞察报告；参与核心创意概念的提炼与脑暴，共同确定「手影」创意方向；负责全案 PPT 的结构梳理与视觉排版设计；协助团队完成最终提案的呈现与打磨。",
+    },
+  ],
+  achievements: [
+    { data: "省部级", detail: "三等奖" },
+    { data: "SWOT", detail: "完整品牌分析框架" },
+    { data: "全案", detail: "从洞察到呈现全流程参与" },
+  ],
+  skills: ["SWOT 分析", "品牌策划", "创意提案", "消费者洞察", "PPT 设计", "团队协作"],
+} : project.slug === "dachuang" ? {
+  subtitle: "核心研究员 · 公益传播与数据分析",
+  banner: "/images/project-dachuang-banner.jpg",
+  background: "参加大学生创新创业大赛，以大爱清尘公益组织为研究对象，聚焦其微信公众号的叙事策略与传播效果。通过线下访谈与全量数据抓取，运用 SPSS 进行量化分析，探究不同话题类型的传播热度差异，以及叙事策略如何塑造公众心目中的尘肺病患者形象。项目最终获国家级结项。",
+  sections: [
+    {
+      title: "研究方法",
+      content: "采用混合研究方法：一方面通过线下深度访谈获取质性材料，了解受众对尘肺病议题的真实感知与态度；另一方面抓取大爱清尘微信公众号全量推文数据，运用 SPSS 对话题分类、阅读量、互动数据进行描述性统计与相关分析，识别高热度话题特征与受众共鸣点，量化叙事策略对公众认知的影响路径。",
+    },
+    {
+      title: "我的角色",
+      content: "作为核心研究员，主导数据采集全流程——从公众号全量数据的抓取与清洗、访谈提纲设计到 SPSS 统计建模；负责研究框架搭建与核心分析章节撰写；参与研究论文的修订打磨与结项答辩材料的准备。",
+    },
+  ],
+  achievements: [
+    { data: "国家级", detail: "结项认定" },
+    { data: "全量", detail: "公众号数据抓取与分析" },
+    { data: "SPSS", detail: "话题热度与受众共鸣量化" },
+  ],
+  skills: ["SPSS", "数据抓取", "深度访谈", "内容分析", "学术写作", "Excel"],
+} : {
+  subtitle: "量化研究 · 游戏角色形象编码分析",
+  banner: "/images/project-tga-banner.jpg",
+  background: "以历年 The Game Awards（TGA）获奖游戏为研究样本，系统抓取获奖作品的主角形象数据，自主设计编码表对角色性别、外貌特征、行为模式、社会文化背景等维度进行编码，运用 SPSS 进行描述性统计与卡方检验，揭示游戏主角形象的演变趋势与获奖关联性。",
+  sections: [
+    {
+      title: "研究设计",
+      content: "梳理历年 TGA 各奖项获奖游戏名单，提取可识别主角的作品作为研究样本。围绕性别、年龄、种族、体型、暴力行为程度、叙事角色定位、社会文化背景等维度设计编码表，建立标准化的角色形象分析框架，确保编码信度与效度。",
+    },
+    {
+      title: "核心发现",
+      content: "男性主角在获奖作品中的占比呈逐年下降趋势，而允许玩家自定义性别与外貌的作品比例显著上升，反映出游戏行业对多元化角色表达的重视；卡方检验显示，高暴力行为倾向与获奖之间不存在显著统计学关联；主角的社会文化背景（如种族、阶层）同样未构成获奖的显著预测因素，说明 TGA 评选更侧重叙事深度与玩法创新而非角色刻板印象。",
+    },
+  ],
+  achievements: [
+    { data: "10+年", detail: "TGA 获奖作品纵向分析" },
+    { data: "多维度", detail: "自主设计编码表与信效度检验" },
+    { data: "卡方检验", detail: "暴力行为与获奖无显著关联" },
+  ],
+  skills: ["SPSS", "内容分析", "编码设计", "卡方检验", "数据可视化", "学术写作"],
+};
+---
+
+<Layout title={`${project.title}`}>
+  <main class="detail-page min-h-screen">
+
+    <!-- Banner 区域 -->
+    {details.banner ? (
+      <div class="relative w-full h-64 sm:h-80 overflow-hidden">
+        <img
+          src={details.banner}
+          alt={project.title}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-bg)]"></div>
+      </div>
+    ) : (
+      <div class="h-24"></div>
+    )}
+
+    <div class="max-w-4xl mx-auto px-6" style={details.banner ? 'margin-top: -3rem; position: relative;' : 'padding-top: 6rem;'}>
+
+      <!-- 返回按钮 -->
+      <a href="/#projects" class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回首页
+      </a>
+
+      <!-- 头部信息 -->
+      <div class="mb-12 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-3 gradient-text">{project.title}</h1>
+        <p class="text-primary font-medium mb-2">{details.subtitle}</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {project.tags.map((tag: string) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+        <p class="text-text-secondary leading-relaxed">{details.background}</p>
+      </div>
+
+      <!-- 内容段落 -->
+      {details.sections.map((section, i) => (
+        <section class={`mb-12 animate-on-scroll delay-${(i + 1) * 100}`}>
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+            {section.title}
+          </h2>
+          <p class="text-text-secondary leading-relaxed">{section.content}</p>
+        </section>
+      ))}
+
+      <!-- 项目成果（数据卡片） -->
+      <section class="mb-12 animate-on-scroll delay-300">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          项目核心
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {details.achievements.map((a) => (
+            <div class="rounded-xl bg-surface border border-border p-5 text-center">
+              <div class="text-2xl sm:text-3xl font-bold mb-2 gradient-text">{a.data}</div>
+              <div class="text-sm text-text-secondary">{a.detail}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 技能标签 -->
+      <section class="mb-12 animate-on-scroll delay-400">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          相关技能
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {details.skills.map((skill) => (
+            <span class="tag">{skill}</span>
+          ))}
+        </div>
+      </section>
+
+      <!-- 下一条 / 回首页 -->
+      <div class="flex justify-center pb-8 animate-on-scroll delay-400">
+        {index < projects.length - 1 ? (
+          <a
+            href={`/project/${projects[index + 1].slug}`}
+            class="btn-glow px-6 py-3 inline-flex items-center gap-2"
+          >
+            下一个项目
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        ) : (
+          <a
+            href="/#projects"
+            class="btn-glow px-6 py-3 inline-flex items-center gap-2"
+          >
+            回到首页
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </a>
+        )}
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

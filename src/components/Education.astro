@@ -1,0 +1,29 @@
+---
+import { education } from "../data/content";
+---
+
+<section id="education" class="py-20 px-4 bg-bg-alt">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="section-title animate-on-scroll">教育背景</h2>
+    <p class="section-subtitle animate-on-scroll">// education</p>
+
+    <div class="space-y-8">
+      {education.map((edu, i) => (
+        <div class={`timeline-item animate-on-scroll delay-${(i + 1) * 100}`}>
+          <div class="glow-card">
+            <div class="glow-card-inner p-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                <h3 class="text-xl font-bold text-text">{edu.school}</h3>
+                <span class="font-mono text-sm text-text-muted mt-1 sm:mt-0">{edu.period}</span>
+              </div>
+              <p class="text-primary font-medium mb-2">
+                {edu.degree} · {edu.major}
+              </p>
+              <p class="text-text-secondary text-sm leading-relaxed">{edu.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,232 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { experience } from "../../data/content";
+
+export function getStaticPaths() {
+  return experience.map((exp, index) => ({
+    params: { slug: index === 0 ? "yuankong" : index === 1 ? "beida-qingniao" : "baidu" },
+    props: { exp, index },
+  }));
+}
+
+const { exp, index } = Astro.props;
+
+// 扩展内容（克制，基于原文）
+const details = index === 0 ? {
+  overview: "在元空智能运营部实习期间，主要负责海外市场的用户增长与内容营销。通过 SEO 内容营销、竞品调研与商业案例包装，助力产品在海外市场的品牌曝光与客户转化。",
+  responsibilities: [
+    {
+      title: "SEO 内容营销",
+      items: [
+        "针对海外市场进行 AI+产品 类核心关键词的挖掘与趋势调研",
+        "结合 AIGC 工具进行本地化创作，保持每日至少 2 篇高质量 SEO 长文的产出频率",
+        "有效提升产品在海外搜索引擎的自然收录与曝光流量",
+      ]
+    },
+    {
+      title: "竞品深度调研",
+      items: [
+        "全面追踪并拆解海外市场主流同类 AI Agent 产品",
+        "从功能矩阵、交互体验及商业化定价等维度进行对比分析",
+        "定期输出深度竞品分析报告，为内部产品迭代与出海营销策略提供直接的数据与理论支撑",
+      ]
+    },
+    {
+      title: "商业案例包装",
+      items: [
+        "深度结合产品核心功能与海外应用场景，主导制作标准化前端落地案例",
+        "独立负责前期数据清洗与处理、业务逻辑梳理",
+        "完成最终商业化 PPT 的视觉排版设计，有效赋能海外客户的拓展与转化",
+      ]
+    },
+  ],
+  achievements: [
+    { data: "60+", detail: "篇高质量 SEO 长文，覆盖核心关键词 50+" },
+    { data: "5", detail: "份深度竞品分析报告，为产品迭代提供依据" },
+    { data: "8", detail: "套标准化商业案例，助力海外客户拓展" },
+  ],
+  skills: ["SEO", "AIGC", "竞品分析", "数据清洗", "PPT 设计", "海外营销"],
+} : index === 1 ? {
+  overview: "在北大青鸟 AI 项目组实习期间，主要负责新媒体内容的 AI 辅助生产与数据驱动运营。通过 AIGC 工具提升内容产出效率，结合数据分析优化运营策略。",
+  responsibilities: [
+    {
+      title: "AI 内容生产",
+      items: [
+        "使用 ChatGPT 辅助生成文案框架，结合人工优化提升内容质量",
+        "利用 Midjourney 生成配图素材，配合 Photoshop 进行二次创作",
+        "探索短视频脚本生成流程，提升视频内容产出效率 30%",
+      ]
+    },
+    {
+      title: "选题策划",
+      items: [
+        "分析行业热点与用户画像，策划月度选题方向",
+        "参与内容日历制定，协调跨部门资源",
+        "跟踪选题数据表现，迭代选题策略",
+      ]
+    },
+    {
+      title: "数据复盘",
+      items: [
+        "跟踪各平台内容数据（阅读量、互动率、转化率）",
+        "输出周报与优化建议，为运营决策提供数据支持",
+        "参与 A/B 测试，验证内容优化方向",
+      ]
+    },
+  ],
+  achievements: [
+    { data: "20+", detail: "篇图文内容与 10+ 条短视频产出" },
+    { data: "25%", detail: "系列选题平均互动率提升" },
+    { data: "8", detail: "份数据周报，为运营策略迭代提供依据" },
+  ],
+  skills: ["ChatGPT", "Midjourney", "Photoshop", "数据分析", "内容策划"],
+} : {
+  overview: "在百度信息流业务部实习期间，主要负责内容风控、竞品调研与产品迭代支持。通过数据驱动的方式参与内容分发策略优化，提升平台内容质量与用户体验。",
+  responsibilities: [
+    {
+      title: "内容风控",
+      items: [
+        "参与信息流内容审核，日均处理万级内容样本",
+        "协助优化风控策略，降低违规内容曝光率",
+        "输出风控案例分析，为策略迭代提供参考",
+      ]
+    },
+    {
+      title: "竞品调研",
+      items: [
+        "对标今日头条、腾讯新闻等主流信息流产品",
+        "输出竞品分析报告，梳理产品差异化方向",
+        "跟踪行业动态，为产品迭代提供依据",
+      ]
+    },
+    {
+      title: "产品迭代",
+      items: [
+        "协助产品经理梳理需求文档，参与需求评审",
+        "跟进内容分发策略的 A/B 测试与效果评估",
+        "收集用户反馈，输出产品优化建议",
+      ]
+    },
+  ],
+  achievements: [
+    { data: "30万+", detail: "内容样本处理，协助优化风控策略" },
+    { data: "3", detail: "份竞品分析报告，为产品迭代提供依据" },
+    { data: "5", detail: "次 A/B 测试，协助验证内容分发策略" },
+  ],
+  skills: ["内容审核", "竞品分析", "产品思维", "数据分析", "Excel"],
+};
+
+// 合并工作职责为一段文字
+const responsibilityText = details.responsibilities
+  .flatMap(r => r.items)
+  .join("；") + "。";
+---
+
+<Layout title={`${exp.company} - ${exp.position}`}>
+  <main class="detail-page min-h-screen pt-24 pb-16">
+    <div class="max-w-4xl mx-auto px-6">
+
+      <!-- 返回按钮 -->
+      <a href="/#experience" class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回首页
+      </a>
+
+      <!-- 头部信息 -->
+      <div class="mb-12 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4 gradient-text">{exp.company}</h1>
+        <div class="flex flex-wrap items-center gap-4 text-text-secondary mb-6">
+          <span class="text-lg font-medium text-primary">{exp.position}</span>
+          <span class="text-text-muted">&middot;</span>
+          <span class="font-mono text-sm">{exp.period}</span>
+        </div>
+        <p class="text-text-secondary leading-relaxed">{details.overview}</p>
+      </div>
+
+      <!-- 工作职责（合并为一段） -->
+      <section class="mb-12 animate-on-scroll delay-100">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          工作职责
+        </h2>
+        <p class="text-text-secondary leading-relaxed">{responsibilityText}</p>
+      </section>
+
+      <!-- 工作成果（数据卡片网格） -->
+      <section class="mb-12 animate-on-scroll delay-200">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          工作成果
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {details.achievements.map((a) => (
+            <div class="rounded-xl bg-surface border border-border p-5 text-center">
+              <div class="text-2xl sm:text-3xl font-bold mb-2 gradient-text">{a.data}</div>
+              <div class="text-sm text-text-secondary">{a.detail}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 技能标签 -->
+      <section class="mb-12 animate-on-scroll delay-300">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          相关技能
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {details.skills.map((skill) => (
+            <span class="tag">{skill}</span>
+          ))}
+        </div>
+      </section>
+
+      <!-- 下一条按钮 -->
+      <div class="flex justify-center animate-on-scroll delay-400">
+        {index < experience.length - 1 ? (
+          <a
+            href={`/experience/${index === 0 ? 'beida-qingniao' : 'baidu'}`}
+            class="btn-glow px-6 py-3 inline-flex items-center gap-2"
+          >
+            下一条
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        ) : (
+          <a
+            href="/#experience"
+            class="btn-glow px-6 py-3 inline-flex items-center gap-2"
+          >
+            回到首页
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </a>
+        )}
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // 滚动渐显动画
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

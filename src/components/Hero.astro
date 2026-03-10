@@ -1,0 +1,155 @@
+---
+import { profile, education } from "../data/content";
+---
+
+<section id="hero" class="hero-dark min-h-screen flex items-center relative overflow-hidden">
+  <!-- 粒子动效画布 -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- 顶部光晕 -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px]"></div>
+  <!-- 右侧光晕（照片背后） -->
+  <div class="absolute top-1/2 right-[10%] -translate-y-1/2 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[100px]"></div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-24 pb-16 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+    <!-- 左：文字区 -->
+    <div class="flex-1 md:max-w-[55%] text-center md:text-left order-2 md:order-1">
+
+      <!-- 状态标签 -->
+      <div class="tag mb-5 animate-on-scroll">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mr-2 animate-pulse"></span>
+        在读研究生 · 求职中
+      </div>
+
+      <!-- 姓名 -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 animate-on-scroll delay-100">
+        <span class="gradient-text">{profile.name}</span>
+      </h1>
+
+      <!-- 渐变线 -->
+      <div class="w-20 h-0.5 md:mx-0 mx-auto mb-5 bg-gradient-to-r from-primary to-secondary animate-on-scroll delay-100"></div>
+
+      <!-- 定位 -->
+      <p class="text-lg sm:text-xl text-text-secondary mb-2 animate-on-scroll delay-200">
+        {profile.title}
+        <span class="text-text-muted mx-2">|</span>
+        <span class="text-primary">{profile.tagline}</span>
+      </p>
+
+      <!-- 技能标签 -->
+      <div class="flex flex-wrap md:justify-start justify-center gap-2 mb-8 animate-on-scroll delay-200">
+        {profile.skills.slice(0, 6).map((skill) => (
+          <span class="tag text-xs">{skill}</span>
+        ))}
+      </div>
+
+      <!-- 教育背景（嵌入式） -->
+      <div class="space-y-3 mb-8 animate-on-scroll delay-300">
+        {education.map((edu) => (
+          <div class="flex items-start gap-3 text-sm">
+            <span class="mt-1 shrink-0 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(56,189,248,0.5)]"></span>
+            <div>
+              <span class="text-text font-medium">{edu.school}</span>
+              <span class="text-text-muted mx-1.5">·</span>
+              <span class="text-primary">{edu.degree} {edu.major}</span>
+              <span class="font-mono text-text-muted ml-2 text-xs">{edu.period}</span>
+              <p class="text-text-muted text-xs mt-0.5">{edu.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- 按钮组 -->
+      <div class="flex items-center md:justify-start justify-center gap-4 animate-on-scroll delay-400">
+        <a href="#contact" class="btn-glow px-5 py-2 text-sm">
+          联系我
+        </a>
+      </div>
+    </div>
+
+    <!-- 右：照片区 -->
+    <div class="w-56 sm:w-64 md:w-auto md:flex-1 md:max-w-[40%] order-1 md:order-2 flex justify-center">
+      <div class="relative">
+        <!-- 照片背后装饰光斑 -->
+        <div class="absolute -inset-8 bg-secondary/10 rounded-full blur-[70px]"></div>
+        <!-- 照片（水彩笔刷边缘）-->
+        <img
+          src="/images/avatar.jpg"
+          alt={profile.name}
+          class="photo-watercolor relative w-full aspect-[3/4] object-cover sm:max-w-[280px] md:max-w-[340px]"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // 粒子动效
+  const canvas = document.getElementById("particles-canvas") as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d")!;
+  let particles: { x: number; y: number; vx: number; vy: number; size: number; alpha: number }[] = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 2 + 0.5,
+        alpha: Math.random() * 0.5 + 0.1,
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.08 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", resize);
+  init();
+  draw();
+</script>
