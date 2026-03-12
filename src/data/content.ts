@@ -113,6 +113,12 @@ export const projects = [
 // ===== 获奖证书 =====
 export const awards = [
   {
+    title: "优秀毕业生",
+    date: "",
+    issuer: "中央民族大学",
+    image: "/images/award-graduate.jpg",
+  },
+  {
     title: "大学生广告艺术大赛 省部级三等奖",
     date: "",
     issuer: "全案策划与执行",
@@ -123,6 +129,12 @@ export const awards = [
     date: "",
     issuer: "核心研究员",
     image: "/images/award2.jpg",
+  },
+  {
+    title: "金犊奖 全国第四",
+    date: "",
+    issuer: "创意设计",
+    image: "/images/award3.jpg",
   },
 ];
 
@@ -145,11 +157,46 @@ export const portfolioItems: {
   demoUrl?: string;
   bilibiliId?: string;
 }[] = [
-  {
-    title: "知愈 - 健康状态追踪 PWA",
-    category: "产品开发",
-    description: "个人健康数据记录与可视化分析应用，支持多维度健康指标追踪、趋势分析与数据导出。采用 PWA 技术，可离线使用并安装到桌面。",
-    image: "/images/zhiyu-cover.jpg",
-    demoUrl: "/portfolio/zhiyu",
-  },
-];
+    {
+      title: "知愈 - 健康状态追踪 ",
+      category: "产品开发",
+      description: "个人健康数据记录与可视化分析应用，支持多维度健康指标追踪、趋势分析与数据导出。采用 PWA 技术，可在电脑端使用，同时进行了手机app迁移。",
+      image: "/images/zhiyu-cover.jpg",
+      demoUrl: "/portfolio/zhiyu",
+    },
+    {
+      title: "AI 课堂笔记生成器",
+      category: "产品开发",
+      description: "录音文稿 + PPT 照片自动生成结构化笔记与思维导图，基于 Kimi API 智能提炼课堂要点，提升学习效率。",
+      image: "/images/lecture-notes-cover.jpg",
+      demoUrl: "/portfolio/lecture-notes",
+    },
+    {
+      title: "平面作品展示",
+      category: "设计作品",
+      description: "包含品牌设计、创意海报、摄影作品等多个系列，涵盖金犊奖、大广赛、学院奖参赛作品及个人摄影创作。",
+      image: "/images/design-works-cover.jpg",
+      demoUrl: "/portfolio/design-works",
+    },
+    {
+      title: "讯飞星火广告片",
+      category: "视频作品",
+      description: "大学生广告艺术大赛参赛作品，以手影创意形式将 AI 助手趣味化植入日常生活场景，获省部级三等奖。",
+      image: "/images/xunfei-ad-cover.jpg",
+      demoUrl: "/portfolio/xunfei-ad",
+    },
+    {
+      title: "知乎与微博 AI 就业话语比较研究",
+      category: "内容运营",
+      description: "基于 Python 数据抓取与语义网络分析，对比微博与知乎平台关于生成式 AI 影响就业的公众话语差异，揭示平台启示性对风险认知的塑造机制。",
+      image: "/images/research-paper-cover.jpg",
+      demoUrl: "/portfolio/research-paper",
+    },
+    {
+      title: "博物北京品牌营销策划案",
+      category: "内容运营",
+      description: "围绕打造北京「博物馆之城」文旅名片，以企业化独立运营为模式，构建「APP+衍生品+自有媒体」产品体系，将博物文化融入北京日常生活。",
+      image: "/images/bowu-beijing-cover.jpg",
+      demoUrl: "/portfolio/bowu-beijing",
+    },
+  ];

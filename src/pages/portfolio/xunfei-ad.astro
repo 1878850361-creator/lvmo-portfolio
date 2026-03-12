@@ -1,0 +1,93 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="讯飞星火广告片 - 吕默">
+  <div class="min-h-screen bg-[#1e2240] pt-24 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- 返回按钮 -->
+      <a
+        href="/#portfolio"
+        class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回作品集
+      </a>
+
+      <!-- 标题区 -->
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent">
+          讯飞星火广告片
+        </h1>
+        <p class="text-gray-400 text-lg">
+          大学生广告艺术大赛参赛作品 · 省部级三等奖
+        </p>
+      </div>
+
+      <!-- 视频播放器 -->
+      <div class="mb-12">
+        <div class="relative w-full" style="padding-bottom: 56.25%;">
+          <iframe
+            src="https://player.bilibili.com/player.html?bvid=BV11cNczuEs3&page=1&high_quality=1&danmaku=0"
+            class="absolute top-0 left-0 w-full h-full rounded-xl border border-white/10"
+            scrolling="no"
+            border="0"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- 项目信息 -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h3 class="text-xl font-semibold mb-4 text-white">创意理念</h3>
+          <p class="text-gray-300 leading-relaxed">
+            以"手影"作为核心创意符号，将 AI 助手拟人化为陪伴用户的"影子"。通过日常生活场景的串联，展现讯飞星火如何自然融入工作、学习、生活的方方面面，传递"AI 触手可及"的品牌理念。
+          </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h3 class="text-xl font-semibold mb-4 text-white">制作团队</h3>
+          <p class="text-gray-300 leading-relaxed">
+            担任项目全案策划与执行，负责创意构思、脚本撰写、分镜设计及后期剪辑。通过 SWOT 分析洞察品牌需求，结合目标受众画像，打造趣味化、场景化的传播内容。
+          </p>
+        </div>
+      </div>
+
+      <!-- 核心数据 -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent mb-2">
+            省部级
+          </div>
+          <div class="text-gray-400 text-sm">获奖等级</div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent mb-2">
+            三等奖
+          </div>
+          <div class="text-gray-400 text-sm">竞赛成绩</div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent mb-2">
+            全案
+          </div>
+          <div class="text-gray-400 text-sm">策划执行</div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent mb-2">
+            讯飞星火
+          </div>
+          <div class="text-gray-400 text-sm">合作品牌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

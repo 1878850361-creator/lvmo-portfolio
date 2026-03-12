@@ -61,24 +61,9 @@ import { profile } from "../data/content";
 
         <div class="mb-6">
           <p class="font-mono text-xs text-text-muted mb-3">// wechat</p>
-          <div class="w-40 h-40 mx-auto rounded-xl img-placeholder border border-border">
-            <span class="font-mono text-xs">qr_code.png</span>
+          <div class="w-40 h-40 mx-auto rounded-xl overflow-hidden border border-border">
+            <img src="/images/wechat-qr.jpg" alt="微信二维码" class="w-full h-full object-cover" />
           </div>
-        </div>
-
-        <div class="glow-divider mb-6"></div>
-
-        <div class="flex justify-center gap-4">
-          {profile.socials.map((s) => (
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-glow px-5 py-2.5 text-sm"
-            >
-              {s.label}
-            </a>
-          ))}
         </div>
       </div>
     </div>

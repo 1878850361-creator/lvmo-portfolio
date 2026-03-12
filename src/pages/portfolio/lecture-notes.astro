@@ -1,0 +1,169 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="AI 课堂笔记生成器">
+  <main class="detail-page min-h-screen pt-24 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- 返回按钮 -->
+      <a href="/#portfolio" class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回首页
+      </a>
+
+      <!-- 头部信息 -->
+      <div class="mb-12 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4 gradient-text">AI 课堂笔记生成器</h1>
+        <p class="text-xl text-primary font-medium mb-4">录音转文稿 + AI 智能提炼 → 结构化笔记</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag">Python</span>
+          <span class="tag">Kimi API</span>
+          <span class="tag">自动化</span>
+          <span class="tag">效率工具</span>
+        </div>
+        <p class="text-text-secondary leading-relaxed max-w-3xl">
+          一款基于 AI 的课堂笔记自动生成工具，将录音文稿与 PPT 照片结合，通过 Kimi API 智能提炼课堂要点，自动生成结构化 Word 笔记与 XMind 思维导图，大幅提升学习效率与知识整理质量。
+        </p>
+      </div>
+
+      <!-- 展示图 -->
+      <section class="mb-12 animate-on-scroll delay-100">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          产品展示
+        </h2>
+        <div class="rounded-xl overflow-hidden border border-border">
+          <img
+            src="/images/lecture-notes-demo.png"
+            alt="AI 课堂笔记生成器界面"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <!-- 核心功能 -->
+      <section class="mb-12 animate-on-scroll delay-200">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          核心功能
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="rounded-lg bg-surface border border-border p-4 aspect-square flex flex-col items-center justify-center text-center">
+            <div class="text-3xl mb-2">📝</div>
+            <h3 class="text-sm font-bold mb-1">文稿解析</h3>
+            <p class="text-text-secondary text-xs">自动读取 Word</p>
+          </div>
+          <div class="rounded-lg bg-surface border border-border p-4 aspect-square flex flex-col items-center justify-center text-center">
+            <div class="text-3xl mb-2">🤖</div>
+            <h3 class="text-sm font-bold mb-1">AI 提炼</h3>
+            <p class="text-text-secondary text-xs">Kimi 智能总结</p>
+          </div>
+          <div class="rounded-lg bg-surface border border-border p-4 aspect-square flex flex-col items-center justify-center text-center">
+            <div class="text-3xl mb-2">📄</div>
+            <h3 class="text-sm font-bold mb-1">Word 笔记</h3>
+            <p class="text-text-secondary text-xs">结构化输出</p>
+          </div>
+          <div class="rounded-lg bg-surface border border-border p-4 aspect-square flex flex-col items-center justify-center text-center">
+            <div class="text-3xl mb-2">🗺️</div>
+            <h3 class="text-sm font-bold mb-1">思维导图</h3>
+            <p class="text-text-secondary text-xs">XMind 格式</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 使用流程 -->
+      <section class="mb-12 animate-on-scroll delay-300">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          使用流程
+        </h2>
+        <div class="space-y-4">
+          <div class="rounded-xl bg-surface border border-border p-6 flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">1</div>
+            <div>
+              <h3 class="font-bold mb-2">准备文件</h3>
+              <p class="text-text-secondary text-sm">创建课堂文件夹，放入通义听悟导出的录音文稿（Word 格式）与 PPT 照片</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6 flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">2</div>
+            <div>
+              <h3 class="font-bold mb-2">一键运行</h3>
+              <p class="text-text-secondary text-sm">双击 <code class="px-2 py-1 bg-bg rounded text-xs">运行.bat</code> 或将文件夹拖拽到批处理文件上</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6 flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">3</div>
+            <div>
+              <h3 class="font-bold mb-2">自动生成</h3>
+              <p class="text-text-secondary text-sm">AI 自动提炼要点，生成结构化 Word 笔记与 XMind 思维导图，保存在同一文件夹</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 技术实现 -->
+      <section class="mb-12 animate-on-scroll delay-400">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          技术实现
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">Python</span>
+          <span class="tag">Kimi API</span>
+          <span class="tag">python-docx</span>
+          <span class="tag">XMind SDK</span>
+          <span class="tag">文件自动化</span>
+          <span class="tag">批处理脚本</span>
+        </div>
+      </section>
+
+      <!-- 项目亮点 -->
+      <section class="mb-12 animate-on-scroll delay-500">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          项目亮点
+        </h2>
+        <div class="space-y-4">
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">🚀 一键自动化</h3>
+            <p class="text-text-secondary text-sm">拖拽文件夹即可运行，无需手动输入命令，降低使用门槛</p>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">🧠 AI 智能提炼</h3>
+            <p class="text-text-secondary text-sm">基于 Kimi API 的长文本理解能力，自动提取课堂核心知识点与逻辑结构</p>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">📊 双格式输出</h3>
+            <p class="text-text-secondary text-sm">同时生成 Word 笔记与 XMind 思维导图，满足不同学习场景需求</p>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">⚡ 效率提升</h3>
+            <p class="text-text-secondary text-sm">将 2-3 小时的手动整理工作压缩至 5 分钟，大幅提升学习效率</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

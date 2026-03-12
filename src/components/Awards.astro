@@ -11,14 +11,19 @@ import { awards } from "../data/content";
       {awards.map((award, i) => (
         <div class={`glow-card animate-on-scroll delay-${(i + 1) * 100}`}>
           <div class="glow-card-inner overflow-hidden">
-            <div class="h-40 img-placeholder">
-              <span class="font-mono text-xs">cert_{String(i + 1).padStart(2, "0")}</span>
+            <div class="h-64 overflow-hidden">
+              <img
+                src={award.image}
+                alt={award.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
 
             <div class="p-4 text-center">
               <h3 class="font-bold text-text mb-1">{award.title}</h3>
               <p class="text-text-secondary text-sm">{award.issuer}</p>
-              <p class="font-mono text-text-muted text-xs mt-1">{award.date}</p>
+              {award.date && <p class="font-mono text-text-muted text-xs mt-1">{award.date}</p>}
             </div>
           </div>
         </div>

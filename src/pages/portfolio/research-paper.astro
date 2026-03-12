@@ -1,0 +1,243 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="知乎与微博 AI 就业话语比较研究">
+  <main class="detail-page min-h-screen pt-24 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- 返回按钮 -->
+      <a href="/#portfolio" class="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回首页
+      </a>
+
+      <!-- 头部信息 -->
+      <div class="mb-12 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4 gradient-text">"是助手还是掘墓人？"</h1>
+        <p class="text-xl text-primary font-medium mb-4">微博与知乎关于生成式 AI 影响就业的公众话语比较研究</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag">Python 数据抓取</span>
+          <span class="tag">语义网络分析</span>
+          <span class="tag">内容分析法</span>
+          <span class="tag">传播学研究</span>
+        </div>
+        <p class="text-text-secondary leading-relaxed max-w-3xl">
+          本研究聚焦 2024-2025 年生成式 AI 技术变革期，通过 Python 自动化数据抓取与 AI 辅助编码，对比微博与知乎两大平台关于 AI 影响就业的公众话语差异。运用混合内容分析法与语义关联网络分析，揭示平台启示性如何系统性地重塑公众的风险感知与心理防御机制。
+        </p>
+      </div>
+
+      <!-- 技术手段（重点强调） -->
+      <section class="mb-12 animate-on-scroll delay-100">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          技术手段
+        </h2>
+        <div class="space-y-4">
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-lg">1</div>
+              <div class="flex-1">
+                <h3 class="font-bold mb-2 text-lg">Python 自动化数据抓取</h3>
+                <p class="text-text-secondary text-sm mb-3">
+                  基于 Python 爬虫技术，针对微博与知乎平台设计差异化抓取策略。通过关键词检索（"AI"+"人工智能"+"失业"等组合）与时间窗口筛选（2024/2025 年春招期），自动化采集公众话语样本。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">Python</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">Requests</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">BeautifulSoup</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">API 调用</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-lg">2</div>
+              <div class="flex-1">
+                <h3 class="font-bold mb-2 text-lg">三级数据清洗流程</h3>
+                <p class="text-text-secondary text-sm mb-3">
+                  第一轮：账号主体过滤，剔除官媒、营销号与机器人；第二轮：AI 辅助语义识别，剔除转发无评论与广告引流；第三轮：人工复核，确保数据纯净度达 98.4%。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">正则表达式</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">NLP 语义识别</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">人工复核</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-lg">3</div>
+              <div class="flex-1">
+                <h3 class="font-bold mb-2 text-lg">AI 辅助编码 + 人工监督</h3>
+                <p class="text-text-secondary text-sm mb-3">
+                  利用 DeepSeek 大语言模型进行批量编码，输入包含明确操作化定义的提示词，对全量样本进行议题焦点、技术接纳立场、归因模式三维分类。随机抽取 10% 样本进行人工独立编码，Kappa 系数达 0.7 以上。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">DeepSeek API</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">Prompt Engineering</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">Kappa 信度检验</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-lg">4</div>
+              <div class="flex-1">
+                <h3 class="font-bold mb-2 text-lg">语义关联网络可视化</h3>
+                <p class="text-text-secondary text-sm mb-3">
+                  提取高频关键词构建"关键词-情感立场"矩阵，采用余弦相似度计算语义关联强度，通过 Fruchterman-Reingold 力导向算法生成网络布局，揭示微博"同心圆焦虑结构"与知乎"多中心辩证网络"的话语差异。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">余弦相似度</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">NetworkX</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">力导向算法</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">数据可视化</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-lg">5</div>
+              <div class="flex-1">
+                <h3 class="font-bold mb-2 text-lg">统计分析与假设检验</h3>
+                <p class="text-text-secondary text-sm mb-3">
+                  运用卡方检验验证平台属性对话语维度的影响，通过调整后残差分析识别具体差异模式，Cramer's V 值量化关联强度，Cronbach's α 系数检验编码内部一致性。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">SPSS</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">卡方检验</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">残差分析</span>
+                  <span class="text-xs px-2 py-1 rounded bg-bg text-text-secondary">信度分析</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心发现 -->
+      <section class="mb-12 animate-on-scroll delay-200">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          核心发现
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-3 text-primary flex items-center gap-2">
+              <span class="text-xl">📱</span>
+              微博：碎片化焦虑
+            </h3>
+            <ul class="space-y-2 text-text-secondary text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>议题聚焦微观生存体验（裁员、房贷压力）</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>技术替代立场占比 34.8%，"掘墓人"叙事主导</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>外部归因倾向，将危机归咎于资本与技术必然性</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>语义网络呈"同心圆"结构，情绪高度集中</span>
+              </li>
+            </ul>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-3 text-primary flex items-center gap-2">
+              <span class="text-xl">💡</span>
+              知乎：理性防御
+            </h3>
+            <ul class="space-y-2 text-text-secondary text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>议题聚焦宏观行业研判与技能转型分析</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>技术增强立场占比 47.4%，"助手"叙事占优</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>内部归因倾向，强调个人能力提升与适应性</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary mt-1">•</span>
+                <span>语义网络呈"多中心"结构，话语多元辩证</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 研究方法 -->
+      <section class="mb-12 animate-on-scroll delay-300">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          研究方法
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">混合内容分析法</span>
+          <span class="tag">语义网络分析</span>
+          <span class="tag">平台启示性理论</span>
+          <span class="tag">归因理论</span>
+          <span class="tag">卡方检验</span>
+          <span class="tag">信度分析</span>
+        </div>
+      </section>
+
+      <!-- 研究意义 -->
+      <section class="mb-12 animate-on-scroll delay-400">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-full"></span>
+          研究意义
+        </h2>
+        <div class="space-y-4">
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">📚 理论贡献</h3>
+            <p class="text-text-secondary text-sm">拓展平台启示性理论的解释力，论证媒介技术架构如何系统性地重塑公众的议程设置与话语逻辑，为理解数字时代的舆论部落化提供新证据</p>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">🎯 实践价值</h3>
+            <p class="text-text-secondary text-sm">为政府与企业的风险沟通提供分层治理策略：微博端侧重就业保障与心理疏导，知乎端侧重职业转型路径与 AI 素养培训</p>
+          </div>
+          <div class="rounded-xl bg-surface border border-border p-6">
+            <h3 class="font-bold mb-2 text-primary">🔍 方法创新</h3>
+            <p class="text-text-secondary text-sm">创新性地将 AI 辅助编码与人工监督相结合，通过语义关联网络可视化揭示话语深层结构，为大规模文本分析提供新范式</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>
