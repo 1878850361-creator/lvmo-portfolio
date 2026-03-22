@@ -7,11 +7,11 @@ import { awards } from "../data/content";
     <h2 class="section-title animate-on-scroll">获奖证书</h2>
     <p class="section-subtitle animate-on-scroll">// awards</p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-4 lg:grid-cols-4 gap-2 md:gap-6">
       {awards.map((award, i) => (
         <div class={`glow-card animate-on-scroll delay-${(i + 1) * 100}`}>
-          <div class="glow-card-inner overflow-hidden">
-            <div class="h-64 overflow-hidden">
+          <div class="glow-card-inner overflow-hidden aspect-square flex flex-col">
+            <div class="flex-1 overflow-hidden">
               <img
                 src={award.image}
                 alt={award.title}
@@ -20,10 +20,10 @@ import { awards } from "../data/content";
               />
             </div>
 
-            <div class="p-4 text-center">
-              <h3 class="font-bold text-text mb-1">{award.title}</h3>
-              <p class="text-text-secondary text-sm">{award.issuer}</p>
-              {award.date && <p class="font-mono text-text-muted text-xs mt-1">{award.date}</p>}
+            <div class="p-2 md:p-4 text-center">
+              <h3 class="font-bold text-text mb-1 text-[10px] md:text-base">{award.title}</h3>
+              <p class="text-text-secondary text-sm hidden md:block">{award.issuer}</p>
+              {award.date && <p class="font-mono text-text-muted text-xs mt-1 hidden md:block">{award.date}</p>}
             </div>
           </div>
         </div>

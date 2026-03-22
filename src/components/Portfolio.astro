@@ -15,7 +15,7 @@ import { portfolioCategories, portfolioItems } from "../data/content";
       ))}
     </div>
 
-    <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="portfolio-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
       {portfolioItems.length > 0 ? (
         portfolioItems.map((item, i) => (
           <div
@@ -52,8 +52,8 @@ import { portfolioCategories, portfolioItems } from "../data/content";
 
               <div class="p-5">
                 <h3 class="font-bold text-text mb-2">{item.title}</h3>
-                <p class="text-text-secondary text-sm mb-3">{item.description}</p>
-                <span class="tag">{item.category}</span>
+                <p class="text-text-secondary text-sm mb-3 hidden md:block">{item.description}</p>
+                <span class="tag hidden md:inline">{item.category}</span>
 
                 {(item.link || item.demoUrl) && (
                   <a
