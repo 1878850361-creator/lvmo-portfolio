@@ -2,10 +2,10 @@
 import { awards } from "../data/content";
 ---
 
-<section id="awards" class="py-20 px-4">
+<section id="awards" class="py-10 md:py-20 px-4">
   <div class="max-w-6xl mx-auto">
-    <h2 class="section-title animate-on-scroll">获奖证书</h2>
-    <p class="section-subtitle animate-on-scroll">// awards</p>
+    <h2 class="section-title animate-on-scroll text-xl md:text-3xl">获奖证书</h2>
+    <p class="section-subtitle animate-on-scroll hidden md:block">// awards</p>
 
     <div class="grid grid-cols-4 lg:grid-cols-4 gap-2 md:gap-6">
       {awards.map((award, i) => (

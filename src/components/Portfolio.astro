@@ -2,12 +2,12 @@
 import { portfolioCategories, portfolioItems } from "../data/content";
 ---
 
-<section id="portfolio" class="py-20 px-4 section-alt">
+<section id="portfolio" class="py-10 md:py-20 px-4 section-alt">
   <div class="max-w-6xl mx-auto">
-    <h2 class="section-title animate-on-scroll">作品集</h2>
-    <p class="section-subtitle animate-on-scroll">// portfolio</p>
+    <h2 class="section-title animate-on-scroll text-xl md:text-3xl">作品集</h2>
+    <p class="section-subtitle animate-on-scroll hidden md:block">// portfolio</p>
 
-    <div class="flex flex-wrap justify-center gap-3 mb-10 animate-on-scroll">
+    <div class="flex-wrap justify-center gap-3 mb-10 animate-on-scroll hidden md:flex">
       {portfolioCategories.map((cat, i) => (
         <button class={`filter-btn ${i === 0 ? "active" : ""}`} data-category={cat}>
           {cat}
@@ -24,7 +24,7 @@ import { portfolioCategories, portfolioItems } from "../data/content";
             data-url={item.demoUrl || item.link}
             data-external={item.link ? "true" : "false"}
           >
-            <div class="glow-card-inner overflow-hidden aspect-[4/3] md:aspect-auto flex flex-col">
+            <div class="glow-card-inner overflow-hidden aspect-[4/3] md:aspect-auto relative md:flex md:flex-col">
               {item.bilibiliId ? (
                 <div class="aspect-video">
                   <iframe
@@ -36,7 +36,7 @@ import { portfolioCategories, portfolioItems } from "../data/content";
                   ></iframe>
                 </div>
               ) : item.image ? (
-                <div class="h-24 md:h-48 overflow-hidden flex-1 min-h-0">
+                <div class="absolute inset-0 md:relative md:h-48 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -45,12 +45,12 @@ import { portfolioCategories, portfolioItems } from "../data/content";
                   />
                 </div>
               ) : (
-                <div class="h-24 md:h-48 img-placeholder flex-1 min-h-0">
+                <div class="absolute inset-0 md:relative md:h-48 img-placeholder">
                   <span class="font-mono text-xs">work_{String(i + 1).padStart(2, "0")}</span>
                 </div>
               )}
 
-              <div class="p-2 md:p-5">
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-1.5 md:relative md:bg-none md:from-transparent md:p-5">
                 <h3 class="font-bold text-text text-xs md:text-base md:mb-2">{item.title}</h3>
                 <p class="text-text-secondary text-sm mb-3 hidden md:block">{item.description}</p>
                 <span class="tag hidden md:inline">{item.category}</span>
