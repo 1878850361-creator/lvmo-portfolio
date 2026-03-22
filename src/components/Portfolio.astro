@@ -24,7 +24,7 @@ import { portfolioCategories, portfolioItems } from "../data/content";
             data-url={item.demoUrl || item.link}
             data-external={item.link ? "true" : "false"}
           >
-            <div class="glow-card-inner overflow-hidden">
+            <div class="glow-card-inner overflow-hidden aspect-[4/3] md:aspect-auto flex flex-col">
               {item.bilibiliId ? (
                 <div class="aspect-video">
                   <iframe
@@ -36,7 +36,7 @@ import { portfolioCategories, portfolioItems } from "../data/content";
                   ></iframe>
                 </div>
               ) : item.image ? (
-                <div class="h-48 overflow-hidden">
+                <div class="h-24 md:h-48 overflow-hidden flex-1 min-h-0">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -45,13 +45,13 @@ import { portfolioCategories, portfolioItems } from "../data/content";
                   />
                 </div>
               ) : (
-                <div class="h-48 img-placeholder">
+                <div class="h-24 md:h-48 img-placeholder flex-1 min-h-0">
                   <span class="font-mono text-xs">work_{String(i + 1).padStart(2, "0")}</span>
                 </div>
               )}
 
-              <div class="p-5">
-                <h3 class="font-bold text-text mb-2">{item.title}</h3>
+              <div class="p-2 md:p-5">
+                <h3 class="font-bold text-text text-xs md:text-base md:mb-2">{item.title}</h3>
                 <p class="text-text-secondary text-sm mb-3 hidden md:block">{item.description}</p>
                 <span class="tag hidden md:inline">{item.category}</span>
 

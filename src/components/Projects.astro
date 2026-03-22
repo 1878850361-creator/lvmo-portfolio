@@ -10,9 +10,9 @@ import { projects } from "../data/content";
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
       {projects.map((project, i) => (
         <div class={`glow-card cursor-pointer animate-on-scroll delay-${(i + 1) * 100}`} data-href={`/project/${project.slug}`}>
-          <div class="glow-card-inner overflow-hidden">
+          <div class="glow-card-inner overflow-hidden aspect-[4/3] md:aspect-auto flex flex-col">
             {project.image ? (
-              <div class="h-48 overflow-hidden">
+              <div class="h-24 md:h-48 overflow-hidden flex-1 min-h-0">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -21,13 +21,13 @@ import { projects } from "../data/content";
                 />
               </div>
             ) : (
-              <div class="h-48 img-placeholder">
+              <div class="h-24 md:h-48 img-placeholder flex-1 min-h-0">
                 <span class="font-mono text-xs">project_{String(i + 1).padStart(2, "0")}.jpg</span>
               </div>
             )}
 
-            <div class="p-6">
-              <h3 class="text-lg font-bold text-text mb-3">{project.title}</h3>
+            <div class="p-2 md:p-6">
+              <h3 class="text-xs md:text-lg font-bold text-text md:mb-3">{project.title}</h3>
 
               <div class="flex flex-wrap gap-2 mb-3 hidden md:flex">
                 {project.tags.map((tag) => (
@@ -37,7 +37,7 @@ import { projects } from "../data/content";
 
               <p class="text-text-secondary text-sm leading-relaxed mb-4 hidden md:block">{project.description}</p>
 
-              <span class="inline-flex items-center gap-2 text-sm text-primary">
+              <span class="inline-flex items-center gap-2 text-sm text-primary hidden md:inline-flex">
                 查看详情
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
