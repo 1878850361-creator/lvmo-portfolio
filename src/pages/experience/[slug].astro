@@ -2,9 +2,12 @@
 import Layout from "../../layouts/Layout.astro";
 import { experience } from "../../data/content";
 
+const slugs = ["shao-yin", "yuankong", "beida-qingniao", "baidu"];
+
 export function getStaticPaths() {
+  const slugs = ["shao-yin", "yuankong", "beida-qingniao", "baidu"];
   return experience.map((exp, index) => ({
-    params: { slug: index === 0 ? "yuankong" : index === 1 ? "beida-qingniao" : "baidu" },
+    params: { slug: slugs[index] },
     props: { exp, index },
   }));
 }
@@ -13,6 +16,19 @@ const { exp, index } = Astro.props;
 
 // 扩展内容（克制，基于原文）
 const details = index === 0 ? {
+  overview: "在韶音实习期间，参与运动健康硬件线未上市创新产品的前期探索，负责产品概念梳理，并开展市场、竞品与用户研究。",
+  responsibilities: [
+    { title: "产品探索", items: ["参与创新产品的 0→1 前期工作，负责产品概念梳理"] },
+    { title: "市场与竞品研究", items: ["梳理行业信息、现有产品方案与关键差异，产出市场调研与竞品分析报告"] },
+    { title: "用户研究", items: ["围绕使用场景、需求与现有解决方案访谈用户，运用 JTBD 方法整理研究成果"] },
+  ],
+  achievements: [
+    { data: "10+", detail: "份市场调研与竞品分析报告" },
+    { data: "30+", detail: "位用户访谈" },
+    { data: "初步验证", detail: "产品进入硬件与软件开发阶段" },
+  ],
+  skills: ["产品探索", "市场研究", "竞品分析", "用户研究", "JTBD"],
+} : index === 1 ? {
   overview: "在元空智能运营部实习期间，主要负责海外市场的用户增长与内容营销。通过 SEO 内容营销、竞品调研与商业案例包装，助力产品在海外市场的品牌曝光与客户转化。",
   responsibilities: [
     {
@@ -46,7 +62,7 @@ const details = index === 0 ? {
     { data: "8", detail: "套标准化商业案例，助力海外客户拓展" },
   ],
   skills: ["SEO", "AIGC", "竞品分析", "数据清洗", "PPT 设计", "海外营销"],
-} : index === 1 ? {
+} : index === 2 ? {
   overview: "在北大青鸟 AI 项目组实习期间，主要负责新媒体内容的 AI 辅助生产与数据驱动运营。通过 AIGC 工具提升内容产出效率，结合数据分析优化运营策略。",
   responsibilities: [
     {
@@ -187,7 +203,7 @@ const responsibilityText = details.responsibilities
       <div class="flex justify-center animate-on-scroll delay-400">
         {index < experience.length - 1 ? (
           <a
-            href={`/experience/${index === 0 ? 'beida-qingniao' : 'baidu'}`}
+            href={`/experience/${slugs[index + 1]}`}
             class="btn-glow px-6 py-3 inline-flex items-center gap-2"
           >
             下一条
